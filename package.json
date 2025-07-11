@@ -4,24 +4,47 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "dev:db": "turso dev --db-file ./src/db/local.db --port 8080",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:migrate:prod": "DATABASE_ENV=production drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:push:prod": "DATABASE_ENV=production drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "db:studio:prod": "DATABASE_ENV=production drizzle-kit studio",
+    "db:drop": "drizzle-kit drop"
   },
   "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "15.3.5"
+    "@libsql/client": "^0.15.9",
+    "@tailwindcss/typography": "^0.5.16",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "dotenv": "^17.2.0",
+    "drizzle-orm": "^0.44.2",
+    "gray-matter": "^4.0.3",
+    "jose": "^6.0.11",
+    "marked": "^16.0.0",
+    "next": "15.3.5",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-icons": "^5.5.0",
+    "tailwind-merge": "^3.3.1",
+    "zod": "^4.0.5"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
-    "eslint": "^9",
+    "@eslint/eslintrc": "^3.3.1",
+    "@tailwindcss/postcss": "^4.1.11",
+    "@types/node": "^20.19.7",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "drizzle-kit": "^0.31.4",
+    "eslint": "^9.30.1",
     "eslint-config-next": "15.3.5",
-    "@eslint/eslintrc": "^3"
-  }
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5.8.3"
+  },
+  "overrides": { "@libsql/hrana-client": "^0.8.0" }
 }

@@ -1,26 +1,320 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-primary: #e9c17f;
+  --color-accent: #011532;
+  --color-secondary: #f5e9b8;
+  --color-dark: #011532;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  @font-face {
+    font-family: "Grotesk";
+    src: url("/fonts/grotesk/SpaceGrotesk-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: "Grotesk";
+    src: url("/fonts/grotesk/SpaceGrotesk-Medium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  .font-outline {
+    -webkit-text-stroke: 2.5px black;
+    background-color: transparent;
+  }
+
+  .font-outline-sm {
+    -webkit-text-stroke: 1.2px black;
+    background-color: transparent;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  * {
+    box-sizing: border-box;
+    font-family: "Grotesk", sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+    line-height: 120%;
+    font-weight: 500;
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 500;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  h4 {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  @media (max-width: 640px) {
+    body {
+      font-size: 16px;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+
+    h1 {
+      font-size: 2.688rem;
+    }
+
+    h2 {
+      font-size: 2.25rem;
+    }
+
+    h3 {
+      font-size: 1.625rem;
+    }
+
+    h4 {
+      font-size: 1.125rem;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .btn-primary {
+    @apply bg-accent text-white rounded-lg px-[35px] py-5 transition-all duration-200;
+  }
+
+  .btn-primary:hover {
+    @apply bg-primary text-accent transform scale-105;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent text-accent px-[35px] py-5 rounded-lg border border-solid border-accent transition-all duration-200;
+  }
+
+  .btn-secondary:hover {
+    @apply bg-accent text-white border-primary transform scale-105;
+  }
+
+  .btn-tertiary {
+    @apply bg-primary text-accent rounded-lg px-[35px] py-5 transition-all duration-200;
+  }
+
+  .btn-tertiary:hover {
+    @apply bg-white text-accent transform scale-105;
+  }
+
+  .primaryhead {
+    @apply bg-primary text-accent rounded-[7px] px-[7px];
+  }
+
+  .whitehead {
+    @apply bg-white text-accent rounded-[7px] px-[7px];
+  }
+
+  .accenthead {
+    @apply bg-accent text-white rounded-[7px] px-[7px];
+  }
+
+  /* markdown styles using Tailwind */
+  .content {
+    @apply leading-relaxed text-gray-700;
+  }
+
+  .content p {
+    @apply my-6 text-lg leading-relaxed;
+  }
+
+  .content h1 {
+    @apply mt-10 mb-6 text-4xl font-semibold leading-tight text-accent;
+  }
+
+  .content h2 {
+    @apply mt-8 mb-4 text-3xl font-semibold leading-snug text-accent;
+  }
+
+  .content h3 {
+    @apply mt-7 mb-4 text-2xl font-medium leading-snug text-accent;
+  }
+
+  .content h4 {
+    @apply mt-6 mb-3 text-xl font-medium text-accent;
+  }
+
+  .content h5 {
+    @apply mt-5 mb-2 text-lg font-medium text-accent;
+  }
+
+  .content h6 {
+    @apply mt-4 mb-2 text-base font-medium text-accent;
+  }
+
+  .content ul, .content ol {
+    @apply my-6 pl-8;
+  }
+
+  .content li {
+    @apply my-2 leading-relaxed;
+  }
+
+  .content blockquote {
+    @apply my-8 p-6 bg-secondary border-l-4 border-primary rounded italic;
+  }
+
+  .content blockquote p {
+    @apply m-0;
+  }
+
+  .content code {
+    @apply bg-gray-100 px-2 py-1 rounded text-sm font-mono;
+  }
+
+  .content pre {
+    @apply my-6 p-4 bg-gray-100 rounded-md overflow-x-auto;
+  }
+
+  .content pre code {
+    @apply bg-transparent p-0 text-sm;
+  }
+
+  .content table {
+    @apply w-full my-8 border-collapse rounded-md overflow-hidden shadow-lg;
+    table-layout: fixed;
+  }
+
+  .content th, .content td {
+    @apply px-4 py-3 text-left border-b border-gray-200;
+    word-wrap: break-word;
+  }
+
+  /* Equal width columns for consistent alignment */
+  .content table.equal-cols-2 th,
+  .content table.equal-cols-2 td {
+    width: 50%;
+  }
+
+  .content table.equal-cols-3 th,
+  .content table.equal-cols-3 td {
+    width: 33.333%;
+  }
+
+  .content table.equal-cols-4 th,
+  .content table.equal-cols-4 td {
+    width: 25%;
+  }
+
+  .content table.equal-cols-5 th,
+  .content table.equal-cols-5 td {
+    width: 20%;
+  }
+
+  .content th {
+    @apply bg-accent text-white font-semibold text-sm;
+  }
+
+  .content td {
+    @apply bg-white text-sm;
+  }
+
+  .content tr:nth-child(even) td {
+    @apply bg-gray-50;
+  }
+
+  .content tr:hover td {
+    @apply bg-gray-100;
+  }
+
+  .content a {
+    @apply text-accent underline decoration-primary underline-offset-2 transition-all duration-200 hover:text-primary hover:decoration-accent;
+  }
+
+  .content hr {
+    @apply my-12 border-0 border-t-2 border-primary rounded;
+  }
+
+  .content img {
+    @apply max-w-full h-auto my-6 rounded-md shadow-lg;
+  }
+
+  .content strong {
+    @apply font-semibold text-accent;
+  }
+
+  .content em {
+    @apply italic text-gray-600;
+  }
+
+  /* Mobile responsive adjustments */
+  @media (max-width: 640px) {
+    .content h1 {
+      @apply text-3xl mt-8 mb-4;
+    }
+
+    .content h2 {
+      @apply text-2xl mt-7 mb-3;
+    }
+
+    .content h3 {
+      @apply text-xl mt-6 mb-3;
+    }
+
+    .content p {
+      @apply text-base my-5;
+    }
+
+    .content table {
+      @apply text-xs overflow-x-auto block whitespace-nowrap;
+    }
+
+    .content th, .content td {
+      @apply px-3 py-2;
+    }
+
+    .content pre {
+      @apply overflow-x-auto text-xs;
+    }
+  }
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
