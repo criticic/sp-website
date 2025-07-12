@@ -24,6 +24,7 @@ async function updateMember(id: number, formData: FormData) {
     } catch (error) { throw new Error('Failed to update member.' + error); }
     revalidatePath('/admin/team');
     revalidatePath(`/admin/team/edit/${id}`);
+    revalidatePath('/team');
     redirect('/admin/team');
 }
 

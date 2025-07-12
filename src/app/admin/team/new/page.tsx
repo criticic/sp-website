@@ -22,6 +22,7 @@ async function createMember(formData: FormData) {
         await db.insert(members).values(validatedFields.data);
     } catch (error) { throw new Error('Failed to create member.' + error); }
     revalidatePath('/admin/team');
+    revalidatePath('/team');
     redirect('/admin/team');
 }
 

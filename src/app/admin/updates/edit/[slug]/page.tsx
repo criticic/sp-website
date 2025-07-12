@@ -30,6 +30,7 @@ async function updateUpdate(slug: string, formData: FormData) {
     revalidatePath('/admin/updates');
     revalidatePath(`/updates/${slug}`);
     revalidatePath(`/updates/${newSlug}`);
+    revalidatePath('/updates');
     redirect('/admin/updates');
 }
 
