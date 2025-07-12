@@ -1,11 +1,12 @@
 import Link from 'next/link';
-import { FaFacebook, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { FaFacebook, FaLinkedin, FaXTwitter, FaInstagram, FaWhatsapp } from 'react-icons/fa6';
 
 const socialLinks = [
   { name: "Facebook", icon: FaFacebook, href: "https://www.facebook.com/sp.iitbhu/" },
   { name: "Linkedin", icon: FaLinkedin, href: "https://www.linkedin.com/company/sp-iitbhu" },
-  { name: "Twitter", icon: FaTwitter, href: "https://x.com/sp_iitbhu_vns" },
-  { name: "Instagram", icon: FaInstagram, href: "https://www.instagram.com/sp.iitbhu/" }
+  { name: "Twitter", icon: FaXTwitter, href: "https://x.com/sp_iitbhu_vns" },
+  { name: "Instagram", icon: FaInstagram, href: "https://www.instagram.com/sp.iitbhu/" },
+  { name: "WhatsApp", icon: FaWhatsapp, href: "https://whatsapp.com/channel/0029VbALWk9EAKWGS3kCRN0Z" },
 ];
 
 export default function Footer() {

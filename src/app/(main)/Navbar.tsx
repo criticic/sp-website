@@ -53,7 +53,7 @@ export default function Navbar() {
               })}
             </ul>
           </nav>
-          <Link href={navButton.href} className="px-6 py-3 rounded-lg bg-accent hover:bg-amber-700 text-white transition-colors duration-200 inline-flex items-center">
+          <Link href={navButton.href} className="px-6 py-3 rounded-lg bg-accent hover:bg-primary text-white hover:text-accent border transition-colors duration-200 inline-flex items-center">
             <span className="text-lg font-normal">{navButton.label}</span>
           </Link>
         </div>

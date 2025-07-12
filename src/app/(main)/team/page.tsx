@@ -1,5 +1,5 @@
 import { db } from "@/db";
-import TeamCard from "@/components/TeamCard";
+import TeamCard from "@/app/(main)/team/TeamCard";
 
 export const revalidate = 3600; // Revalidate every hour
 

@@ -31,7 +31,7 @@ export default function ContactForm({ committees }: ContactFormProps) {
 
     const emailSubject = encodeURIComponent(subject);
     const body = encodeURIComponent(
-      `Message:\n${message}\n\n` +
+      `${message}\n\n` +
       `Sent by: ${name}\n\n` +
       `---\n` +
       `This message was sent from the Students Parliament website contact form.`
