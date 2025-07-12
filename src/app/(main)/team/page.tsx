@@ -58,6 +58,16 @@ export default async function TeamPage() {
                   >
                     {executiveBody.email}
                   </a>
+                  {executiveBody.email === "vp.gymkhana@itbhu.ac.in" && (
+                    <div className="mt-2">
+                      <a
+                        href="mailto:avp.gymkhana@itbhu.ac.in"
+                        className="text-blue-600 hover:text-blue-800 font-medium text-lg transition-colors"
+                      >
+                        avp.gymkhana@itbhu.ac.in
+                      </a>
+                    </div>
+                  )}
                 </div>
               )}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
