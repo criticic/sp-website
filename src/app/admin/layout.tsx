@@ -1,20 +1,13 @@
-import { redirect } from 'next/navigation';
-import { deleteSession } from '@/lib/auth';
-import { FaHome, FaNewspaper, FaFileAlt, FaUsers, FaShieldAlt, FaSignOutAlt } from 'react-icons/fa';
-import Link from 'next/link';
+'use client';
+import { useState } from 'react';
+import Sidebar from "@/app/admin/Sidebar";
+import { FaUserPlus, FaUsers, FaTachometerAlt, FaQrcode, FaBars } from "react-icons/fa";
 
-async function logout() {
-  'use server';
-  await deleteSession();
-  redirect('/login');
-}
-
-const navItems = [
-  { href: '/admin', label: 'Dashboard', icon: FaHome },
-  { href: '/admin/updates', label: 'Updates', icon: FaFileAlt },
-  { href: '/admin/newsletters', label: 'Newsletters', icon: FaNewspaper },
-  { href: '/admin/team', label: 'Team Members', icon: FaUsers },
-  { href: '/admin/committees', label: 'Committees', icon: FaShieldAlt },
+const adminNavItems = [
+  { href: '/admin', label: 'Dashboard', icon: FaTachometerAlt },
+  { href: '/admin/students', label: 'All Students', icon: FaUsers },
+  { href: '/admin/students/new', label: 'Add Student', icon: FaUserPlus },
+  { href: '/admin/scanner', label: 'Scanner', icon: FaQrcode },
 ];
 
 export default function AdminLayout({
@@ -22,33 +15,29 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
+  const closeSidebar = () => setIsSidebarOpen(false);
+
   return (
     <div className="flex min-h-screen bg-gray-100">
-      <aside className="w-64 bg-dark text-white p-4 flex flex-col fixed h-full">
-        <h2 className="text-2xl font-bold mb-8 text-primary">Admin Panel</h2>
-        <nav className="flex-grow">
-          <ul className="space-y-2">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="flex items-center p-2 rounded hover:bg-primary hover:text-dark transition-colors"
-                >
-                  <item.icon className="w-5 h-5 mr-3" />
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <form action={logout}>
-            <button type="submit" className="flex w-full items-center p-2 rounded hover:bg-red-500 transition-colors">
-                <FaSignOutAlt className="w-5 h-5 mr-3" />
-                Logout
-            </button>
-        </form>
-      </aside>
-      <main className="flex-1 p-8 ml-64">
+      {/* Mobile menu button */}
+      <button
+        onClick={toggleSidebar}
+        className="fixed top-4 left-4 z-50 lg:hidden bg-white p-2 rounded-md shadow-md border"
+      >
+        <FaBars size={20} className="text-gray-600" />
+      </button>
+
+      <Sidebar 
+        navItems={adminNavItems} 
+        title="Admin Panel" 
+        isOpen={isSidebarOpen}
+        onClose={closeSidebar}
+      />
+      
+      <main className="flex-1 p-4 sm:p-6 lg:p-8 lg:ml-64 pt-16 lg:pt-4">
         {children}
       </main>
     </div>

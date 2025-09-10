@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
-  title: 'Students\' Parliament IIT BHU',
-  description: 'The official website of Students\' Parliament IIT BHU - Representing the voice of students and fostering democratic governance within the institution.',
+  title: 'Digital ID - IIT BHU',
+  description: 'Digital ID system for IIT (BHU) Varanasi students - Secure, dynamic QR code-based identification.',
 };
 
 export default function RootLayout({
@@ -16,7 +17,10 @@ export default function RootLayout({
       <head>
       </head>
       <body className="antialiased">
-        {children}
+        <div className="min-h-screen">
+          {children}
+        </div>
+        <Toaster richColors />
       </body>
     </html>
   );
