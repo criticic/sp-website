@@ -5,10 +5,29 @@ import { revalidatePath } from 'next/cache';
 import Link from 'next/link';
 import { FaPlusCircle, FaEdit, FaTrash } from "react-icons/fa";
 import Image from "next/image";
+import { v2 as cloudinary } from 'cloudinary';
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
+function getPublicId(url: string): string | null {
+  const match = url.match(/\/v\d+\/(.+?)\.(jpg|jpeg|png|gif|webp)/);
+  return match ? match[1] : null;
+}
 
 async function deleteMember(id: number) {
     'use server';
     try {
+        const [member] = await db.select().from(members).where(eq(members.id, id));
+        if (member?.image) {
+            const publicId = getPublicId(member.image);
+            if (publicId) {
+                await cloudinary.uploader.destroy(publicId).catch(() => {});
+            }
+        }
         await db.delete(members).where(eq(members.id, id));
     } catch (error) { throw new Error('Failed to delete member.' + error); }
     revalidatePath('/admin/team');

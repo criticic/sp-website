@@ -1,6 +1,11 @@
 import Image from 'next/image';
 import { FaUser, FaEnvelope } from 'react-icons/fa';
 
+function optimizeCloudinaryUrl(url: string): string {
+  if (!url.startsWith('https://res.cloudinary.com/')) return url;
+  return url.replace('/image/upload/', '/image/upload/w_400,h_400,c_fill,g_face,q_auto,f_auto/');
+}
+
 interface Member {
   id: number;
   name: string;
@@ -63,8 +68,8 @@ export default function TeamCard({ committeeMember, member }: TeamCardProps) {
             : 'bg-gray-50 border-2 border-gray-300'
           }
         `}>
-          {pic && !pic.includes("image") ? (
-            <Image src={pic} alt={`Profile picture of ${name}`} className="w-full h-full object-cover" width={96} height={96} />
+          {pic && (pic.startsWith('http') || (!pic.includes('image') && !pic.startsWith('/assets'))) ? (
+            <Image src={optimizeCloudinaryUrl(pic)} alt={`Profile picture of ${name}`} className="w-full h-full object-cover" width={96} height={96} unoptimized />
           ) : (
             <FaUser className={`w-8 h-8 sm:w-12 sm:h-12 ${isConvenor ? 'text-amber-600' : 'text-gray-600'}`} />
           )}

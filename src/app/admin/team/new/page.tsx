@@ -5,6 +5,7 @@ import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
+import ImageUploader from "@/components/ImageUploader";
 
 const MemberSchema = z.object({
   name: z.string().min(1, 'Name is required.'),
@@ -41,10 +42,7 @@ export default function NewMemberPage() {
                             <label htmlFor="name" className="block font-medium text-gray-700">Full Name</label>
                             <input type="text" name="name" id="name" required className="w-full mt-1 border-gray-300 rounded-md shadow-sm" />
                         </div>
-                        <div>
-                            <label htmlFor="image" className="block font-medium text-gray-700">Image Path</label>
-                            <input type="text" name="image" id="image" placeholder="/assets/people/Example Name.png" className="w-full mt-1 border-gray-300 rounded-md shadow-sm" />
-                        </div>
+                        <ImageUploader name="image" />
                         <div>
                             <label htmlFor="contactLink" className="block font-medium text-gray-700">Contact Link (mailto: or URL)</label>
                             <input type="text" name="contactLink" id="contactLink" placeholder="mailto:example@itbhu.ac.in" className="w-full mt-1 border-gray-300 rounded-md shadow-sm" />
