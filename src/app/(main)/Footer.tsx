@@ -11,54 +11,50 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <section className="sm:px-5">
-      <div className="w-full max-w-[1240px] mx-auto px-2 sm:px-0">
-        <div className="px-4 md:px-[15px] lg:px-[60px] bg-dark text-gray-300 py-6 sm:py-8 md:py-[55px] sm:rounded-t-[45px]">
+    <footer className="border-t border-gold/10">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-12 md:py-16">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-0 justify-between items-start">
           <div>
-            <div className="flex flex-col md:flex-row gap-6 md:gap-7 items-center justify-between">
-              <div className="flex items-center">
-                <Link href="/">
-                  <span className="text-base sm:text-lg md:text-xl font-bold text-primary text-center md:text-left">
-                    Students Parliament, IIT (BHU) Varanasi
-                  </span>
-                </Link>
-              </div>
-              <ul className="flex gap-3 md:gap-5 flex-wrap justify-center">
-                {socialLinks.map((social) => {
-                  const IconComponent = social.icon;
-                  return (
-                    <li key={social.name}>
-                      <a
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 bg-gray-700 rounded-full hover:bg-primary transition-colors"
-                        aria-label={social.name}
-                      >
-                        <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                      </a>
-                    </li>
-                  );
-                })}
-              </ul>
+            <p className="text-sm font-body font-medium text-ink">Students Parliament</p>
+            <p className="text-xs font-mono text-slate mt-1">IIT (BHU) Varanasi</p>
+            <div className="rostrum-rule my-4 max-w-40">
+              ◆
             </div>
-            
-            <div className="h-[1px] bg-gray-700 my-6 sm:my-8 md:my-12"></div>
-            
-            <div className="flex flex-col md:flex-row gap-4 md:gap-0 justify-center md:justify-between items-center text-center md:text-left text-xs sm:text-sm">
-              <div className="text-white order-2 md:order-1">
-                &copy; {new Date().getFullYear()} Students Parliament IIT BHU. All rights reserved.
-              </div>
-              <div className="text-white order-1 md:order-2 max-w-md md:max-w-none">
-                Made with ❤️ by the
-                <a href="https://copsiitbhu.co.in" target="_blank" className="underline ml-1">Club of Programmers (COPS)</a>
-                &nbsp;under
-                <a href="https://www.sntciitbhu.co.in/" target="_blank" className="underline ml-1">SNTC, IIT BHU</a>
-              </div>
+            <p className="text-xs font-mono text-slate">
+              vp.parliament@itbhu.ac.in
+            </p>
+          </div>
+
+          <div className="flex flex-col items-start md:items-end gap-4">
+            <div className="flex gap-3">
+              {socialLinks.map((social) => {
+                const IconComponent = social.icon;
+                return (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-9 h-9 border border-slate/30 text-slate hover:border-gold hover:text-gold transition-colors"
+                    aria-label={social.name}
+                  >
+                    <IconComponent className="w-4 h-4" />
+                  </a>
+                );
+              })}
             </div>
+            <p className="text-xs font-mono text-slate text-right">
+              &copy; {new Date().getFullYear()} Students Parliament IIT BHU
+            </p>
+            <p className="text-xs font-mono text-slate/60 text-right">
+              Made by{' '}
+              <a href="https://copsiitbhu.co.in" target="_blank" className="hover:text-gold transition-colors underline underline-offset-2 decoration-gold/30">COPS</a>
+              {' '}&bull;{' '}
+              <a href="https://www.sntciitbhu.co.in/" target="_blank" className="hover:text-gold transition-colors underline underline-offset-2 decoration-gold/30">SNTC</a>
+            </p>
           </div>
         </div>
       </div>
-    </section>
+    </footer>
   );
 }

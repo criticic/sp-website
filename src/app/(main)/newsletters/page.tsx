@@ -5,54 +5,41 @@ import Link from "next/link";
 import { FaNewspaper } from "react-icons/fa";
 import { formatDate } from "@/lib/utils";
 
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = 3600;
 
 export default async function NewsletterListPage() {
-  const newsletters = await db
-    .select()
-    .from(newslettersTable)
-    .orderBy(desc(newslettersTable.publishDate));
+  const newsletters = await db.select().from(newslettersTable).orderBy(desc(newslettersTable.publishDate));
 
   return (
-    <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-3">
-      <div className="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
-        <h2 className="mb-4 text-2xl sm:text-3xl lg:text-4xl tracking-tight font-extrabold">Newsletters</h2>
-        <p className="font-light text-base sm:text-lg lg:text-xl">Browse and read our newsletters featuring campus updates, student achievements, and important announcements.</p>
+    <div className="py-16 md:py-24 px-6 md:px-12 lg:px-16 max-w-7xl mx-auto">
+      <div className="max-w-3xl mx-auto text-center mb-16">
+        <p className="font-mono text-xs text-gold tracking-[0.2em] uppercase mb-6">Publications</p>
+        <h2 className="mb-4">Newsletters</h2>
+        <div className="rostrum-rule my-6 justify-center">◆</div>
+        <p className="text-lg text-slate leading-relaxed max-w-xl mx-auto">Browse campus updates, student achievements, and important announcements.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {newsletters.map((newsletter) => (
-          <Link
-            key={newsletter.id}
-            href={`/newsletters/${newsletter.id}`}
-            className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transition-all duration-300 hover:scale-105 block"
-          >
-            <div className="p-6">
-              <div className="flex justify-center mb-6">
-                <div className="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center">
-                  <FaNewspaper className="w-8 h-8 text-red-600" />
-                </div>
+          <Link key={newsletter.id} href={`/newsletters/${newsletter.id}`} className="block bg-light-parchment border-t-2 border-gold/30 hover:border-gold transition-all duration-300 p-6">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-14 h-14 flex items-center justify-center border border-slate/20 mb-4">
+                <FaNewspaper className="w-6 h-6 text-slate" />
               </div>
-              <div className="text-center">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{newsletter.title}</h3>
-                <p className="text-gray-600 mb-4 text-sm line-clamp-3">{newsletter.description}</p>
-                <div className="text-sm text-gray-500 mb-4">
-                  <span className="font-medium">Published: {formatDate(newsletter.publishDate)}</span>
-                </div>
-                <div className="flex justify-center gap-3">
-                  <span className="inline-flex items-center px-4 py-2 bg-accent text-white rounded-lg text-sm">
-                    View Newsletter
-                  </span>
-                </div>
-              </div>
+              <h3 className="font-body font-medium text-ink text-base mb-2">{newsletter.title}</h3>
+              <p className="text-xs text-slate leading-relaxed line-clamp-3 mb-4 font-body">{newsletter.description}</p>
+              <div className="font-mono text-xs text-slate/60 mb-4">{formatDate(newsletter.publishDate)}</div>
+              <span className="inline-block px-4 py-2 bg-ink text-white text-xs font-mono uppercase tracking-wider hover:bg-gold hover:text-ink transition-colors">
+                View
+              </span>
             </div>
           </Link>
         ))}
       </div>
 
       {newsletters.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-gray-500 text-lg">No newsletters available at the moment.</p>
+        <div className="text-center py-16">
+          <p className="text-slate font-body">No newsletters available at the moment.</p>
         </div>
       )}
     </div>

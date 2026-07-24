@@ -18,33 +18,33 @@ export default async function UpdatePage({ params }: { params: Promise<{ slug: s
   const { slug } = await params;
   const update = await getUpdate(slug);
 
-  if (!update) {
-    notFound();
-  }
+  if (!update) { notFound(); }
 
   const contentHtml = await marked.parse(update.content);
 
   return (
-    <div className="bg-white py-8">
-      <div className="px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-3">
-        <div className="font-light text-gray-500 sm:text-lg">
-          <Link href="/updates" className="inline-flex items-center font-medium text-black hover:text-primary my-4">
-            <FaArrowLeft className="h-5 w-5 sm:h-6 sm:w-6" />
-            <span className="ml-1 font-bold text-base sm:text-lg">All Updates</span>
-          </Link>
-          <h1 className="mb-4 text-2xl sm:text-3xl md:text-4xl tracking-tight font-extrabold text-gray-900">{update.title}</h1>
-          <h3 className="text-sm sm:text-base md:text-lg mb-2">Written by {update.author} on {formatDate(update.pubDate)}</h3>
-          <div className="flex flex-wrap gap-2 mb-6">
-            {update.tags.map((tag: string) => (
-              <span key={tag} className="px-2 py-1 bg-lime-200 text-lime-800 rounded-full text-xs font-medium">#{tag}</span>
-            ))}
-          </div>
-          <article
-            className="content"
-            dangerouslySetInnerHTML={{ __html: contentHtml }}
-          ></article>
-        </div>
+    <div className="py-16 md:py-24 px-6 md:px-12 lg:px-16 max-w-3xl mx-auto">
+      <Link href="/updates" className="inline-flex items-center gap-2 font-mono text-xs text-slate hover:text-gold transition-colors mb-8">
+        <FaArrowLeft className="w-3 h-3" />
+        Back to Updates
+      </Link>
+
+      <p className="font-mono text-xs text-gold tracking-[0.2em] uppercase mb-4">Update</p>
+      <h1 className="mb-4">{update.title}</h1>
+
+      <div className="flex flex-wrap items-center gap-4 mb-8 font-mono text-xs text-slate">
+        <span>{formatDate(update.pubDate)}</span>
+        <span className="text-slate/30">/</span>
+        <span>By {update.author}</span>
       </div>
+
+      <div className="flex flex-wrap gap-2 mb-10">
+        {update.tags.map((tag: string) => (
+          <span key={tag} className="px-3 py-1 bg-ink text-white text-xs font-mono">#{tag}</span>
+        ))}
+      </div>
+
+      <article className="content" dangerouslySetInnerHTML={{ __html: contentHtml }}></article>
     </div>
   );
 }

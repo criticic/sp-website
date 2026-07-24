@@ -20,104 +20,63 @@ export default function ContactForm({ committees }: ContactFormProps) {
 
   const handleSendEmail = (e: FormEvent) => {
     e.preventDefault();
-    if (!selectedCommittee) {
-      alert('Please select a committee.');
-      return;
-    }
-    if (!name || !subject || !message) {
-      alert('Please fill in all fields.');
-      return;
-    }
+    if (!selectedCommittee) { alert('Please select a committee.'); return; }
+    if (!name || !subject || !message) { alert('Please fill in all fields.'); return; }
 
     const emailSubject = encodeURIComponent(subject);
     const body = encodeURIComponent(
-      `${message}\n\n` +
-      `Sent by: ${name}\n\n` +
-      `---\n` +
-      `This message was sent from the Students Parliament website contact form.`
+      `${message}\n\nSent by: ${name}\n\n---\nThis message was sent from the Students Parliament website contact form.`
     );
-
-    const mailtoLink = `mailto:${selectedCommittee}?subject=${emailSubject}&body=${body}`;
-    window.location.href = mailtoLink;
+    window.location.href = `mailto:${selectedCommittee}?subject=${emailSubject}&body=${body}`;
   };
 
   return (
     <div>
-      <h2 className="text-2xl sm:text-3xl font-medium text-accent mb-6">Send a Message to a Committee</h2>
-      <form onSubmit={handleSendEmail} className="space-y-4 sm:space-y-6">
+      <h3 className="text-xl mb-6">Send a Message</h3>
+      <form onSubmit={handleSendEmail} className="space-y-5">
         <div>
-          <label htmlFor="committee" className="block text-base sm:text-lg font-medium text-gray-700 mb-1 sm:mb-2">
-            Committee
-          </label>
+          <label htmlFor="committee" className="block font-mono text-xs text-slate uppercase tracking-wider mb-2">Committee</label>
           <select
-            id="committee"
-            name="committee"
-            value={selectedCommittee}
+            id="committee" name="committee" value={selectedCommittee}
             onChange={(e) => setSelectedCommittee(e.target.value)}
-            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-colors text-sm sm:text-base"
+            className="w-full px-4 py-3 bg-light-parchment border border-slate/20 text-ink font-body text-sm focus:outline-none focus:border-gold transition-colors"
           >
             <option value="">Select a committee...</option>
-            {committees
-              .filter(c => c.email)
-              .map(c => (
-                <option key={c.name} value={c.email || ''}>
-                  {c.name}
-                </option>
-              ))}
+            {committees.filter(c => c.email).map(c => (
+              <option key={c.name} value={c.email!}>{c.name}</option>
+            ))}
           </select>
         </div>
-        
+
         <div>
-          <label htmlFor="name" className="block text-base sm:text-lg font-medium text-gray-700 mb-1 sm:mb-2">
-            Your Name
-          </label>
-          <input 
-            type="text" 
-            id="name" 
-            name="name" 
-            value={name} 
-            onChange={(e) => setName(e.target.value)} 
-            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-colors text-sm sm:text-base" 
-            required 
-            placeholder="Enter your full name"
+          <label htmlFor="name" className="block font-mono text-xs text-slate uppercase tracking-wider mb-2">Your Name</label>
+          <input type="text" id="name" name="name" value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full px-4 py-3 bg-light-parchment border border-slate/20 text-ink font-body text-sm focus:outline-none focus:border-gold transition-colors"
+            required placeholder="Enter your full name"
           />
         </div>
-        
+
         <div>
-          <label htmlFor="subject" className="block text-base sm:text-lg font-medium text-gray-700 mb-1 sm:mb-2">
-            Subject
-          </label>
-          <input 
-            type="text" 
-            id="subject" 
-            name="subject" 
-            value={subject} 
-            onChange={(e) => setSubject(e.target.value)} 
-            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-colors text-sm sm:text-base" 
-            required 
-            placeholder="Brief description of your inquiry"
+          <label htmlFor="subject" className="block font-mono text-xs text-slate uppercase tracking-wider mb-2">Subject</label>
+          <input type="text" id="subject" name="subject" value={subject}
+            onChange={(e) => setSubject(e.target.value)}
+            className="w-full px-4 py-3 bg-light-parchment border border-slate/20 text-ink font-body text-sm focus:outline-none focus:border-gold transition-colors"
+            required placeholder="Brief description of your inquiry"
           />
         </div>
-        
+
         <div>
-          <label htmlFor="message" className="block text-base sm:text-lg font-medium text-gray-700 mb-1 sm:mb-2">
-            Message
-          </label>
-          <textarea 
-            id="message" 
-            name="message" 
-            rows={5} 
-            value={message} 
-            onChange={(e) => setMessage(e.target.value)} 
-            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-colors resize-vertical text-sm sm:text-base" 
-            required
-            placeholder="Describe your question or concern in detail..."
+          <label htmlFor="message" className="block font-mono text-xs text-slate uppercase tracking-wider mb-2">Message</label>
+          <textarea id="message" name="message" rows={5} value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            className="w-full px-4 py-3 bg-light-parchment border border-slate/20 text-ink font-body text-sm focus:outline-none focus:border-gold transition-colors resize-vertical"
+            required placeholder="Describe your question or concern..."
           />
         </div>
-        
-        <button 
-          type="submit" 
-          className="w-full py-2.5 sm:py-3 px-6 bg-accent text-white font-medium rounded-lg shadow-sm hover:bg-primary hover:text-dark transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 text-sm sm:text-base"
+
+        <button type="submit"
+          className="w-full py-3 bg-ink text-white font-body font-medium text-sm tracking-wider uppercase hover:bg-gold hover:text-ink transition-colors duration-200"
         >
           Send Message
         </button>

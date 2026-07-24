@@ -2,19 +2,49 @@ import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <section id="home" className="px-5 flex justify-center overflow-hidden">
-      <div className="w-full max-w-[1280px] mx-auto min-h-[calc(100vh-80px)] flex items-center justify-center">
-        <div className="relative flex flex-col items-center" id="hero">
-            <div className="items-center py-5 md:pb-20 md:pt-10">
-                <div className="text-center space-y-3">
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium leading-tight md:leading-none text-accent">Empowering Student <br className="hidden sm:block" /> Voices at <br className="hidden sm:block" /> IIT BHU</h1>
-                    <p className="mt-6 mb-8 text-base sm:text-lg font-normal leading-7 sm:mb-12 text-gray-700 max-w-3xl mx-auto px-2">The Students Parliament IIT BHU serves as the democratic voice of students, working towards academic excellence, student welfare, and institutional development through transparent governance and active participation.</p>
-                    <div className="w-full justify-center items-center inline-flex">
-                        <Link href="/contact" className="px-6 sm:px-8 py-4 sm:py-5 bg-accent hover:bg-primary rounded-2xl text-center text-white hover:text-accent border text-lg sm:text-xl font-normal leading-7">Get Involved
-                        </Link>
-                    </div>
-                </div>
+    <section className="min-h-[calc(100vh-80px)] flex items-center">
+      <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 py-16 md:py-24">
+        <div className="max-w-4xl">
+          <p className="font-mono text-xs text-gold tracking-[0.2em] uppercase mb-6">
+            Students Parliament
+          </p>
+
+          <h1 className="mb-6">
+            Empowering Student <br />
+            <span className="text-gold">Voices</span> at IIT BHU
+          </h1>
+
+          <div className="rostrum-rule my-8">
+            ◆
+          </div>
+
+          <p className="text-lg md:text-xl text-slate max-w-2xl leading-relaxed mb-10">
+            The Students Parliament serves as the democratic voice of students, working towards academic excellence, student welfare, and institutional development through transparent governance and active participation.
+          </p>
+
+          <div className="flex flex-wrap gap-4">
+            <Link href="/contact" className="btn-primary">
+              Get Involved
+            </Link>
+            <Link href="/team" className="btn-secondary">
+              Our Team
+            </Link>
+          </div>
+
+          <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="border-t border-gold/30 pt-4">
+              <p className="font-mono text-2xl text-ink">3</p>
+              <p className="font-mono text-xs text-slate mt-1 uppercase tracking-wider">Committees</p>
             </div>
+            <div className="border-t border-gold/30 pt-4">
+              <p className="font-mono text-2xl text-ink">50+</p>
+              <p className="font-mono text-xs text-slate mt-1 uppercase tracking-wider">Members</p>
+            </div>
+            <div className="border-t border-gold/30 pt-4">
+              <p className="font-mono text-2xl text-ink">Est. 2021</p>
+              <p className="font-mono text-xs text-slate mt-1 uppercase tracking-wider">Established</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

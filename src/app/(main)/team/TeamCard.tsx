@@ -1,11 +1,6 @@
 import Image from 'next/image';
 import { FaUser, FaEnvelope } from 'react-icons/fa';
 
-function optimizeCloudinaryUrl(url: string): string {
-  if (!url.startsWith('https://res.cloudinary.com/')) return url;
-  return url.replace('/image/upload/', '/image/upload/w_400,h_400,c_fill,g_face,q_auto,f_auto/');
-}
-
 interface Member {
   id: number;
   name: string;
@@ -27,88 +22,56 @@ interface TeamCardProps {
   member?: Member;
 }
 
+function optimizeCloudinaryUrl(url: string): string {
+  if (!url.startsWith('https://res.cloudinary.com/')) return url;
+  return url.replace('/image/upload/', '/image/upload/w_400,h_400,c_fill,g_face,q_auto,f_auto/');
+}
+
 export default function TeamCard({ committeeMember, member }: TeamCardProps) {
   const memberData = committeeMember?.member || member;
   const role = committeeMember?.role;
   const isConvenor = committeeMember?.isConvenor || false;
-  
+
   if (!memberData) return null;
 
   const { name, image: pic, contactLink } = memberData;
-  
+
   const primaryEmail = contactLink?.includes('@') ? contactLink : null;
-  const secondaryEmail = null; // This would need to be extracted based on your data structure
 
   return (
-    <div className={`
-      relative overflow-hidden rounded-lg border p-4 sm:p-6 flex flex-col
-      ${isConvenor 
-        ? 'bg-gradient-to-br from-amber-50 to-yellow-50 border-amber-300 shadow-md' 
-        : 'bg-white border-gray-300 shadow-sm'
-      }
-      hover:shadow-xl transition-all duration-300
-    `}>
-      
-      {/* Convenor Badge */}
-      {isConvenor && (
-        <div className="absolute top-0 right-0 bg-amber-600 text-white px-2 sm:px-3 py-1 rounded-bl-lg text-xs font-semibold shadow-sm">
-          {role === 'Vice President' ? 'VP' : (role === 'Assistant Vice President' ? 'AVP' : 'Convenor')}
-        </div>
-      )}
-      
-      {/* Card Content */}
+    <div className="bg-light-parchment border-t-2 border-gold/30 hover:border-gold transition-colors duration-300 p-5 sm:p-6 flex flex-col">
       <div className="flex flex-col items-center text-center flex-grow">
-        
-        {/* Profile Image */}
         <div className={`
-          w-20 h-20 sm:w-24 sm:h-24 rounded-full mb-3 sm:mb-4 shadow-md overflow-hidden flex-shrink-0
-          flex items-center justify-center
-          ${isConvenor 
-            ? 'bg-gradient-to-br from-amber-100 to-yellow-100 border-2 border-amber-400' 
-            : 'bg-gray-50 border-2 border-gray-300'
-          }
+          w-20 h-20 sm:w-24 sm:h-24 rounded-full mb-4 overflow-hidden flex-shrink-0
+          flex items-center justify-center border-2
+          ${isConvenor ? 'border-gold' : 'border-slate/20'}
         `}>
           {pic && (pic.startsWith('http') || (!pic.includes('image') && !pic.startsWith('/assets'))) ? (
             <Image src={optimizeCloudinaryUrl(pic)} alt={`Profile picture of ${name}`} className="w-full h-full object-cover" width={96} height={96} unoptimized />
           ) : (
-            <FaUser className={`w-8 h-8 sm:w-12 sm:h-12 ${isConvenor ? 'text-amber-600' : 'text-gray-600'}`} />
+            <FaUser className={`w-8 h-8 sm:w-10 sm:h-10 ${isConvenor ? 'text-gold' : 'text-slate/40'}`} />
           )}
         </div>
-        
-        {/* Name and Role */}
-        <div className="space-y-1 mb-3 sm:mb-4">
-          <h3 className={`text-base sm:text-lg font-semibold ${isConvenor ? 'text-amber-700' : 'text-gray-900'}`}>
-            {name}
-          </h3>
+
+        <div className="space-y-1 mb-3">
+          <h3 className="font-body font-medium text-ink text-sm sm:text-base">{name}</h3>
           {role && (
-            <p className={`text-xs sm:text-sm font-medium ${isConvenor ? 'text-amber-600' : 'text-gray-700'}`}>
+            <p className={`font-mono text-xs ${isConvenor ? 'text-gold' : 'text-slate'}`}>
               {role}
             </p>
           )}
         </div>
       </div>
 
-      {/* Email Links Section */}
       {primaryEmail && (
-        <div className="mt-auto pt-3 sm:pt-4 border-t border-gray-300 flex flex-col items-center space-y-1">
-          <a 
+        <div className="mt-auto pt-3 border-t border-slate/10">
+          <a
             href={`mailto:${primaryEmail}`}
-            className="flex w-full items-center justify-center gap-2 text-xs text-gray-800 hover:text-amber-700 transition-colors font-medium"
-            aria-label={`Email ${name} at ${primaryEmail}`}
+            className="flex items-center justify-center gap-2 text-xs font-mono text-slate hover:text-gold transition-colors"
           >
             <FaEnvelope className="w-3 h-3 flex-shrink-0" />
-            <span className="truncate text-[10px] sm:text-xs" title={primaryEmail}>{primaryEmail}</span>
+            <span className="truncate">{primaryEmail}</span>
           </a>
-          {secondaryEmail && (
-            <a 
-              href={`mailto:${secondaryEmail}`}
-              className="flex w-full items-center justify-center gap-2 text-xs font-semibold text-gray-900 hover:text-amber-700 transition-colors"
-              aria-label={`Email at ${secondaryEmail}`}
-            >
-              <FaEnvelope className="w-3 h-3 flex-shrink-0" />
-              <span className="truncate" title={secondaryEmail}>{secondaryEmail}</span>
-            </a>
-          )}
         </div>
       )}
     </div>
