@@ -32,45 +32,36 @@ async function createNewsletter(formData: FormData) {
 export default function NewNewsletterPage() {
     return (
         <div>
-            <Link href="/admin/newsletters" className="flex items-center text-gray-600 hover:text-gray-900 mb-6">
-                <FaArrowLeft className="w-5 h-5 mr-2" />
+            <Link href="/admin/newsletters" className="inline-flex items-center gap-2 font-mono text-xs text-slate hover:text-gold transition-colors mb-8">
+                <FaArrowLeft className="w-3 h-3" />
                 Back to Newsletters
             </Link>
-            <h1 className="text-3xl font-bold mb-6">Add New Newsletter</h1>
-            <div className="bg-white p-8 rounded-lg shadow-md">
+            <p className="font-mono text-xs text-gold tracking-[0.2em] uppercase mb-1">Admin</p>
+            <h1 className="text-2xl md:text-3xl mb-8">Add Newsletter</h1>
+            <div className="bg-light-parchment border border-slate/10 p-8 max-w-2xl">
                 <form action={createNewsletter}>
                     <div className="space-y-6">
                         <div>
-                            <label htmlFor="id" className="block font-medium text-gray-700">ID</label>
-                            <input type="text" name="id" id="id" placeholder="e.g., newsletter-2025-08" required className="w-full mt-1 border-gray-300 rounded-md shadow-sm" />
-                        </div>
-                         <div>
-                            <label htmlFor="title" className="block font-medium text-gray-700">Title</label>
-                            <input type="text" name="title" id="title" required className="w-full mt-1 border-gray-300 rounded-md shadow-sm" />
+                            <label htmlFor="id" className="block font-mono text-xs text-slate uppercase tracking-wider mb-2">ID</label>
+                            <input type="text" name="id" id="id" placeholder="e.g., newsletter-2025-08" required className="w-full px-4 py-3 bg-white border border-slate/20 text-ink font-body text-sm focus:outline-none focus:border-gold transition-colors" />
                         </div>
                         <div>
-                            <label htmlFor="description" className="block font-medium text-gray-700">Description</label>
-                            <textarea name="description" id="description" rows={3} required className="w-full mt-1 border-gray-300 rounded-md shadow-sm"></textarea>
+                            <label htmlFor="title" className="block font-mono text-xs text-slate uppercase tracking-wider mb-2">Title</label>
+                            <input type="text" name="title" id="title" required className="w-full px-4 py-3 bg-white border border-slate/20 text-ink font-body text-sm focus:outline-none focus:border-gold transition-colors" />
                         </div>
                         <div>
-                            <label htmlFor="publishDate" className="block font-medium text-gray-700">Publish Date</label>
-                            <input type="date" name="publishDate" id="publishDate" required className="w-full mt-1 border-gray-300 rounded-md shadow-sm" />
+                            <label htmlFor="description" className="block font-mono text-xs text-slate uppercase tracking-wider mb-2">Description</label>
+                            <textarea name="description" id="description" rows={3} required className="w-full px-4 py-3 bg-white border border-slate/20 text-ink font-body text-sm focus:outline-none focus:border-gold transition-colors"></textarea>
                         </div>
                         <div>
-                            <label htmlFor="pdfPath" className="block font-medium text-gray-700">PDF Embed Code</label>
-                            <textarea 
-                                name="pdfPath" 
-                                id="pdfPath" 
-                                rows={4} 
-                                placeholder="Paste your PDF embed code here (e.g., from Google Drive, OneDrive, etc.)" 
-                                required 
-                                className="w-full mt-1 border-gray-300 rounded-md shadow-sm font-mono text-sm"
-                            ></textarea>
-                            <p className="mt-2 text-sm text-gray-500">
-                                For Google Drive: Share → Get link → Change to &quot;Anyone with the link&quot; → Embed Item
-                            </p>
+                            <label htmlFor="publishDate" className="block font-mono text-xs text-slate uppercase tracking-wider mb-2">Publish Date</label>
+                            <input type="date" name="publishDate" id="publishDate" required className="w-full px-4 py-3 bg-white border border-slate/20 text-ink font-body text-sm focus:outline-none focus:border-gold transition-colors" />
                         </div>
-                        <button type="submit" className="px-6 py-2 bg-accent text-white rounded-lg hover:bg-primary hover:text-dark transition-colors">Save Newsletter</button>
+                        <div>
+                            <label htmlFor="pdfPath" className="block font-mono text-xs text-slate uppercase tracking-wider mb-2">PDF Embed Code</label>
+                            <textarea name="pdfPath" id="pdfPath" rows={4} placeholder="Paste your PDF embed code here" required className="w-full px-4 py-3 bg-white border border-slate/20 text-ink font-mono text-sm focus:outline-none focus:border-gold transition-colors"></textarea>
+                        </div>
+                        <button type="submit" className="px-6 py-3 bg-ink text-white text-sm font-body font-medium hover:bg-gold hover:text-ink transition-colors">Save Newsletter</button>
                     </div>
                 </form>
             </div>

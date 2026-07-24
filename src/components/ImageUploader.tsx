@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { FaSpinner, FaCloudUploadAlt, FaTimes } from 'react-icons/fa';
 
@@ -13,7 +13,14 @@ export default function ImageUploader({ name, defaultValue }: Props) {
   const [uploading, setUploading] = useState(false);
   const [preview, setPreview] = useState<string | null>(defaultValue || null);
   const [error, setError] = useState('');
+  const [imageUrl, setImageUrl] = useState(defaultValue || '');
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.value = imageUrl;
+    }
+  }, [imageUrl]);
 
   async function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -35,7 +42,7 @@ export default function ImageUploader({ name, defaultValue }: Props) {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Upload failed');
       setPreview(data.url);
-      if (inputRef.current) inputRef.current.value = data.url;
+      setImageUrl(data.url);
     } catch (err: any) {
       setError(err.message || 'Upload failed');
     } finally {
@@ -45,33 +52,33 @@ export default function ImageUploader({ name, defaultValue }: Props) {
 
   function clearImage() {
     setPreview(null);
-    if (inputRef.current) inputRef.current.value = '';
+    setImageUrl('');
   }
 
   return (
     <div>
-      <label className="block font-medium text-gray-700 mb-2">Photo</label>
+      <label className="block font-mono text-xs text-slate uppercase tracking-wider mb-2">Photo</label>
       <input type="hidden" name={name} ref={inputRef} defaultValue={defaultValue || ''} />
 
       {preview ? (
         <div className="relative inline-block">
-          <Image src={preview} alt="Preview" width={120} height={120} className="rounded-lg object-cover w-28 h-28" />
+          <Image src={preview} alt="Preview" width={120} height={120} className="object-cover w-28 h-28 border border-slate/10" />
           <button
             type="button"
             onClick={clearImage}
-            className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 shadow hover:bg-red-600"
+            className="absolute -top-2 -right-2 bg-red-500 text-white p-1 shadow hover:bg-red-600 transition-colors"
           >
             <FaTimes className="w-3 h-3" />
           </button>
         </div>
       ) : (
-        <label className="flex flex-col items-center justify-center w-36 h-36 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-accent transition-colors bg-gray-50">
+        <label className="flex flex-col items-center justify-center w-36 h-36 border border-dashed border-slate/30 cursor-pointer hover:border-gold transition-colors bg-white">
           {uploading ? (
-            <FaSpinner className="w-8 h-8 text-gray-400 animate-spin" />
+            <FaSpinner className="w-8 h-8 text-slate/40 animate-spin" />
           ) : (
             <>
-              <FaCloudUploadAlt className="w-8 h-8 text-gray-400 mb-1" />
-              <span className="text-xs text-gray-500">Click to upload</span>
+              <FaCloudUploadAlt className="w-8 h-8 text-slate/40 mb-1" />
+              <span className="text-xs text-slate/60 font-body">Click to upload</span>
             </>
           )}
           <input
@@ -84,7 +91,7 @@ export default function ImageUploader({ name, defaultValue }: Props) {
         </label>
       )}
 
-      {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+      {error && <p className="text-red-400 text-xs mt-1 font-mono">{error}</p>}
     </div>
   );
 }

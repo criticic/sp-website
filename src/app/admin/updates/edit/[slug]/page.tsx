@@ -38,43 +38,42 @@ export default async function EditUpdatePage({ params }: { params: Promise<{ slu
     const { slug } = await params;
     const [update] = await db.select().from(updates).where(eq(updates.slug, slug));
 
-    if (!update) {
-        notFound();
-    }
+    if (!update) { notFound(); }
     
     const updateAction = updateUpdate.bind(null, update.slug);
 
     return (
         <div>
-            <Link href="/admin/updates" className="flex items-center text-gray-600 hover:text-gray-900 mb-6">
-                <FaArrowLeft className="w-5 h-5 mr-2" />
+            <Link href="/admin/updates" className="inline-flex items-center gap-2 font-mono text-xs text-slate hover:text-gold transition-colors mb-8">
+                <FaArrowLeft className="w-3 h-3" />
                 Back to Updates
             </Link>
-            <h1 className="text-3xl font-bold mb-6">Edit Update</h1>
-            <div className="bg-white p-8 rounded-lg shadow-md">
+            <p className="font-mono text-xs text-gold tracking-[0.2em] uppercase mb-1">Admin</p>
+            <h1 className="text-2xl md:text-3xl mb-8">Edit Update</h1>
+            <div className="bg-light-parchment border border-slate/10 p-8 max-w-2xl">
                 <form action={updateAction}>
                     <div className="space-y-6">
                         <div>
-                            <label htmlFor="title" className="block font-medium text-gray-700">Title</label>
-                            <input type="text" name="title" id="title" defaultValue={update.title} required className="w-full mt-1 border-gray-300 rounded-md shadow-sm" />
+                            <label htmlFor="title" className="block font-mono text-xs text-slate uppercase tracking-wider mb-2">Title</label>
+                            <input type="text" name="title" id="title" defaultValue={update.title} required className="w-full px-4 py-3 bg-white border border-slate/20 text-ink font-body text-sm focus:outline-none focus:border-gold transition-colors" />
                         </div>
                         <div>
-                            <label htmlFor="author" className="block font-medium text-gray-700">Author</label>
-                            <input type="text" name="author" id="author" defaultValue={update.author} required className="w-full mt-1 border-gray-300 rounded-md shadow-sm" />
+                            <label htmlFor="author" className="block font-mono text-xs text-slate uppercase tracking-wider mb-2">Author</label>
+                            <input type="text" name="author" id="author" defaultValue={update.author} required className="w-full px-4 py-3 bg-white border border-slate/20 text-ink font-body text-sm focus:outline-none focus:border-gold transition-colors" />
                         </div>
                         <div>
-                            <label htmlFor="summary" className="block font-medium text-gray-700">Summary</label>
-                            <textarea name="summary" id="summary" rows={3} defaultValue={update.summary} required className="w-full mt-1 border-gray-300 rounded-md shadow-sm"></textarea>
+                            <label htmlFor="summary" className="block font-mono text-xs text-slate uppercase tracking-wider mb-2">Summary</label>
+                            <textarea name="summary" id="summary" rows={3} defaultValue={update.summary} required className="w-full px-4 py-3 bg-white border border-slate/20 text-ink font-body text-sm focus:outline-none focus:border-gold transition-colors"></textarea>
                         </div>
                         <div>
-                            <label htmlFor="tags" className="block font-medium text-gray-700">Tags (comma-separated)</label>
-                            <input type="text" name="tags" id="tags" defaultValue={update.tags?.join(', ')} className="w-full mt-1 border-gray-300 rounded-md shadow-sm" />
+                            <label htmlFor="tags" className="block font-mono text-xs text-slate uppercase tracking-wider mb-2">Tags (comma-separated)</label>
+                            <input type="text" name="tags" id="tags" defaultValue={update.tags?.join(', ')} className="w-full px-4 py-3 bg-white border border-slate/20 text-ink font-body text-sm focus:outline-none focus:border-gold transition-colors" />
                         </div>
                         <div>
-                            <label htmlFor="content" className="block font-medium text-gray-700">Content (Markdown)</label>
-                            <textarea name="content" id="content" rows={15} defaultValue={update.content} className="w-full mt-1 border-gray-300 rounded-md shadow-sm font-mono"></textarea>
+                            <label htmlFor="content" className="block font-mono text-xs text-slate uppercase tracking-wider mb-2">Content (Markdown)</label>
+                            <textarea name="content" id="content" rows={15} defaultValue={update.content} className="w-full px-4 py-3 bg-white border border-slate/20 text-ink font-mono text-sm focus:outline-none focus:border-gold transition-colors"></textarea>
                         </div>
-                        <button type="submit" className="px-6 py-2 bg-accent text-white rounded-lg hover:bg-primary hover:text-dark transition-colors">Save Changes</button>
+                        <button type="submit" className="px-6 py-3 bg-ink text-white text-sm font-body font-medium hover:bg-gold hover:text-ink transition-colors">Save Changes</button>
                     </div>
                 </form>
             </div>
