@@ -1,7 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { format } from 'date-fns';
-import { authenticator } from 'otplib';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -21,17 +20,4 @@ export function slugify(text: string) {
     .replace(/--+/g, "-")
     .replace(/^-+/, "")
     .replace(/-+$/, "");
-}
-
-// TOTP utilities
-export function generateTotpSecret(): string {
-  return authenticator.generateSecret();
-}
-
-export function getTotp(secret: string): string {
-  return authenticator.generate(secret);
-}
-
-export function verifyTotp(token: string, secret: string): boolean {
-  return authenticator.verify({ token, secret });
 }

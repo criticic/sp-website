@@ -1,5 +1,5 @@
 {
-  "name": "digital-id-iitbhu",
+  "name": "sp-website",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -18,35 +18,19 @@
     "db:drop": "drizzle-kit drop"
   },
   "dependencies": {
-    "@auth/drizzle-adapter": "^1.10.0",
     "@libsql/client": "^0.15.9",
-    "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.16",
-    "@types/qrcode": "^1.5.5",
-    "@types/speakeasy": "^2.0.10",
-    "@yudiel/react-qr-scanner": "^2.3.1",
-    "@zxing/library": "^0.21.3",
-    "better-auth": "^1.2.0",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "dotenv": "^17.2.0",
     "drizzle-orm": "^0.44.2",
     "gray-matter": "^4.0.3",
-    "html5-qrcode": "^2.3.8",
     "jose": "^6.0.11",
     "marked": "^16.0.0",
     "next": "15.3.5",
-    "otplib": "^12.0.1",
-    "qr-scanner": "^1.4.2",
-    "qrcode": "^1.5.4",
-    "qrcode.react": "^4.1.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
-    "react-qr-scanner": "^1.0.0-alpha.11",
-    "react-webcam-qr-scanner": "^1.0.8",
-    "sonner": "^1.5.0",
-    "speakeasy": "^2.0.0",
     "tailwind-merge": "^3.3.1",
     "zod": "^4.0.5"
   },
@@ -62,7 +46,5 @@
     "tailwindcss": "^4.1.11",
     "typescript": "^5.8.3"
   },
-  "overrides": {
-    "@libsql/hrana-client": "^0.8.0"
-  }
+  "overrides": { "@libsql/hrana-client": "^0.8.0" }
 }
