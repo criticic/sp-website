@@ -35,4 +35,9 @@ next-env.d.ts
 src/db/local.db
 src/db/local.backup.sqlite
 
+# npm shim for bun (not needed on vercel)
+npm.cmd
 
+
+
+.vercel
