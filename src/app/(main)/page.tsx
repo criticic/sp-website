@@ -1,6 +1,12 @@
 import Link from "next/link";
+import { db } from "@/db";
+import { committees, members } from "@/db/schema";
+import { count } from 'drizzle-orm';
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [committeesCount] = await db.select({ value: count() }).from(committees);
+  const [membersCount] = await db.select({ value: count() }).from(members);
+
   return (
     <section className="min-h-[calc(100vh-80px)] flex items-center">
       <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 py-16 md:py-24">
@@ -33,15 +39,15 @@ export default function HomePage() {
 
           <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6">
             <div className="border-t border-gold/30 pt-4">
-              <p className="font-mono text-2xl text-ink">3</p>
+              <p className="font-mono text-2xl text-ink">{committeesCount.value}</p>
               <p className="font-mono text-xs text-slate mt-1 uppercase tracking-wider">Committees</p>
             </div>
             <div className="border-t border-gold/30 pt-4">
-              <p className="font-mono text-2xl text-ink">50+</p>
+              <p className="font-mono text-2xl text-ink">{membersCount.value}</p>
               <p className="font-mono text-xs text-slate mt-1 uppercase tracking-wider">Members</p>
             </div>
             <div className="border-t border-gold/30 pt-4">
-              <p className="font-mono text-2xl text-ink">Est. 2021</p>
+              <p className="font-mono text-2xl text-ink">Est. 2012</p>
               <p className="font-mono text-xs text-slate mt-1 uppercase tracking-wider">Established</p>
             </div>
           </div>
