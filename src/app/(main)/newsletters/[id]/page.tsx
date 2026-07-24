@@ -46,10 +46,10 @@ export default async function NewsletterPage({ params }: { params: Promise<{ id:
           <div className="p-6">
             <div className="bg-gray-50 rounded-lg overflow-hidden">
               <div className="relative">
-                <div 
-                  className="w-full h-[800px] [&>iframe]:w-full [&>iframe]:!h-full [&>embed]:w-full [&>embed]:!h-full [&>object]:w-full [&>object]:!h-full"
-                  dangerouslySetInnerHTML={{ __html: newsletter.pdfPath }}
-                />
+                  <div 
+                    className="w-full h-[400px] sm:h-[600px] md:h-[800px] [&>iframe]:w-full [&>iframe]:!h-full [&>embed]:w-full [&>embed]:!h-full [&>object]:w-full [&>object]:!h-full"
+                    dangerouslySetInnerHTML={{ __html: newsletter.pdfPath }}
+                  />
               </div>
             </div>
           </div>

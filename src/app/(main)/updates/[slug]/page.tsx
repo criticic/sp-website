@@ -26,14 +26,14 @@ export default async function UpdatePage({ params }: { params: Promise<{ slug: s
 
   return (
     <div className="bg-white py-8">
-      <div className="gap-16 items-center px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-1 lg:py-16 lg:px-3">
+      <div className="px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-3">
         <div className="font-light text-gray-500 sm:text-lg">
           <Link href="/updates" className="inline-flex items-center font-medium text-black hover:text-primary my-4">
-            <FaArrowLeft className="h-6 w-6" />
-            <span className="ml-1 font-bold text-lg">All Updates</span>
+            <FaArrowLeft className="h-5 w-5 sm:h-6 sm:w-6" />
+            <span className="ml-1 font-bold text-base sm:text-lg">All Updates</span>
           </Link>
-          <h1 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">{update.title}</h1>
-          <h3 className="text-lg mb-2">Written by {update.author} on {formatDate(update.pubDate)}</h3>
+          <h1 className="mb-4 text-2xl sm:text-3xl md:text-4xl tracking-tight font-extrabold text-gray-900">{update.title}</h1>
+          <h3 className="text-sm sm:text-base md:text-lg mb-2">Written by {update.author} on {formatDate(update.pubDate)}</h3>
           <div className="flex flex-wrap gap-2 mb-6">
             {update.tags.map((tag: string) => (
               <span key={tag} className="px-2 py-1 bg-lime-200 text-lime-800 rounded-full text-xs font-medium">#{tag}</span>

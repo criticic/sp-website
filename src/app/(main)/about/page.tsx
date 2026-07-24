@@ -3,12 +3,12 @@ export default function AboutPage() {
     <main className="space-y-16 lg:space-y-20">
       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-3">
           <div className="relative flex flex-col-reverse items-center md:flex-row">
-              <div className="row items-center py-5 md:pb-20 md:pt-10">
-                  <div className="text-center space-y-10">
-                      <h1 className="text-4xl md:text-6xl font-medium leading-none text-accent">Democratizing Student <br /> Governance at <br /> IIT BHU</h1>
-                      <p className="mt-6 mb-8 text-xl font-normal leading-7 sm:mb-12 text-gray-600">The Students Parliament IIT BHU is a democratic institution that represents the collective voice of students, fostering transparent governance, academic excellence, and comprehensive student welfare initiatives.</p>
-                      <a className="px-9 py-5 bg-accent hover:bg-primary text-white hover:text-accent border rounded-2xl justify-items-center md:justify-items-start gap-2.5 inline-flex" href="/contact">
-                          <h2 className="text-center text-xl font-normal leading-7">Join Our Mission</h2>
+              <div className="items-center py-5 md:pb-20 md:pt-10">
+                  <div className="text-center space-y-6 sm:space-y-10">
+                      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium leading-tight md:leading-none text-accent">Democratizing Student <br className="hidden sm:block" /> Governance at <br className="hidden sm:block" /> IIT BHU</h1>
+                      <p className="mt-6 mb-8 text-base sm:text-lg md:text-xl font-normal leading-7 sm:mb-12 text-gray-600 max-w-3xl mx-auto">The Students Parliament IIT BHU is a democratic institution that represents the collective voice of students, fostering transparent governance, academic excellence, and comprehensive student welfare initiatives.</p>
+                      <a className="px-6 sm:px-9 py-4 sm:py-5 bg-accent hover:bg-primary text-white hover:text-accent border rounded-2xl justify-items-center md:justify-items-start gap-2.5 inline-flex text-lg sm:text-xl" href="/contact">
+                          Join Our Mission
                       </a>
                   </div>
               </div>

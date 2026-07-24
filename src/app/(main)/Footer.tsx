@@ -12,18 +12,18 @@ const socialLinks = [
 export default function Footer() {
   return (
     <section className="sm:px-5">
-      <div className="w-full max-w-[1240px] mx-auto">
-        <div className="px-4 md:px-[15px] lg:px-[60px] bg-dark text-gray-300 py-8 md:py-[55px] sm:rounded-t-[45px]">
+      <div className="w-full max-w-[1240px] mx-auto px-2 sm:px-0">
+        <div className="px-4 md:px-[15px] lg:px-[60px] bg-dark text-gray-300 py-6 sm:py-8 md:py-[55px] sm:rounded-t-[45px]">
           <div>
             <div className="flex flex-col md:flex-row gap-6 md:gap-7 items-center justify-between">
-              <div className="flex items-center space-x-3">
-                <Link href="/" className="flex items-center space-x-3">
-                  <span className="text-lg md:text-xl font-bold text-primary text-center md:text-left">
+              <div className="flex items-center">
+                <Link href="/">
+                  <span className="text-base sm:text-lg md:text-xl font-bold text-primary text-center md:text-left">
                     Students Parliament, IIT (BHU) Varanasi
                   </span>
                 </Link>
               </div>
-              <ul className="flex gap-4 md:gap-5">
+              <ul className="flex gap-3 md:gap-5 flex-wrap justify-center">
                 {socialLinks.map((social) => {
                   const IconComponent = social.icon;
                   return (
@@ -32,10 +32,10 @@ export default function Footer() {
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center w-10 h-10 bg-gray-700 rounded-full hover:bg-primary transition-colors"
+                        className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 bg-gray-700 rounded-full hover:bg-primary transition-colors"
                         aria-label={social.name}
                       >
-                        <IconComponent className="w-5 h-5 text-white" />
+                        <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                       </a>
                     </li>
                   );
@@ -43,13 +43,13 @@ export default function Footer() {
               </ul>
             </div>
             
-            <div className="h-[1px] bg-gray-700 my-8 md:my-12"></div>
+            <div className="h-[1px] bg-gray-700 my-6 sm:my-8 md:my-12"></div>
             
-            <div className="flex flex-col md:flex-row gap-4 md:gap-0 justify-center md:justify-between items-center text-center md:text-left text-sm">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-0 justify-center md:justify-between items-center text-center md:text-left text-xs sm:text-sm">
               <div className="text-white order-2 md:order-1">
-                © {new Date().getFullYear()} Students Parliament IIT BHU. All rights reserved.
+                &copy; {new Date().getFullYear()} Students Parliament IIT BHU. All rights reserved.
               </div>
-              <div className="text-white order-1 md:order-2">
+              <div className="text-white order-1 md:order-2 max-w-md md:max-w-none">
                 Made with ❤️ by the
                 <a href="https://copsiitbhu.co.in" target="_blank" className="underline ml-1">Club of Programmers (COPS)</a>
                 &nbsp;under

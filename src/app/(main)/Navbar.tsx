@@ -21,10 +21,10 @@ export default function Navbar() {
 
   return (
     <nav className="w-full top-0 left-0 z-50 fixed bg-white shadow-sm border-b border-gray-100">
-      <header className="flex items-center justify-between my-5 px-4 md:px-8 lg:px-16 xl:px-32 max-w-7xl mx-auto w-full">
+      <header className="flex items-center justify-between my-3 sm:my-5 px-4 md:px-8 lg:px-16 xl:px-32 max-w-7xl mx-auto w-full">
         <Link href="/" className="flex flex-col items-start">
-          <span className="text-xl font-bold text-gray-900">Students Parliament</span>
-          <span className="text-xl font-bold text-gray-900">IIT (BHU) Varanasi</span>
+          <span className="text-sm sm:text-base md:text-xl font-bold text-gray-900 leading-tight">Students Parliament</span>
+          <span className="text-sm sm:text-base md:text-xl font-bold text-gray-900 leading-tight">IIT (BHU) Varanasi</span>
         </Link>
         
         <div className="hidden lg:flex items-center gap-4">

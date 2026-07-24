@@ -36,7 +36,7 @@ export default function TeamCard({ committeeMember, member }: TeamCardProps) {
 
   return (
     <div className={`
-      relative overflow-hidden rounded-lg border p-6 flex flex-col
+      relative overflow-hidden rounded-lg border p-4 sm:p-6 flex flex-col
       ${isConvenor 
         ? 'bg-gradient-to-br from-amber-50 to-yellow-50 border-amber-300 shadow-md' 
         : 'bg-white border-gray-300 shadow-sm'
@@ -46,7 +46,7 @@ export default function TeamCard({ committeeMember, member }: TeamCardProps) {
       
       {/* Convenor Badge */}
       {isConvenor && (
-        <div className="absolute top-0 right-0 bg-amber-600 text-white px-3 py-1 rounded-bl-lg text-xs font-semibold shadow-sm">
+        <div className="absolute top-0 right-0 bg-amber-600 text-white px-2 sm:px-3 py-1 rounded-bl-lg text-xs font-semibold shadow-sm">
           {role === 'Vice President' ? 'VP' : (role === 'Assistant Vice President' ? 'AVP' : 'Convenor')}
         </div>
       )}
@@ -56,7 +56,7 @@ export default function TeamCard({ committeeMember, member }: TeamCardProps) {
         
         {/* Profile Image */}
         <div className={`
-          w-24 h-24 rounded-full mb-4 shadow-md overflow-hidden flex-shrink-0
+          w-20 h-20 sm:w-24 sm:h-24 rounded-full mb-3 sm:mb-4 shadow-md overflow-hidden flex-shrink-0
           flex items-center justify-center
           ${isConvenor 
             ? 'bg-gradient-to-br from-amber-100 to-yellow-100 border-2 border-amber-400' 
@@ -66,17 +66,17 @@ export default function TeamCard({ committeeMember, member }: TeamCardProps) {
           {pic && !pic.includes("image") ? (
             <Image src={pic} alt={`Profile picture of ${name}`} className="w-full h-full object-cover" width={96} height={96} />
           ) : (
-            <FaUser className={`w-12 h-12 ${isConvenor ? 'text-amber-600' : 'text-gray-600'}`} />
+            <FaUser className={`w-8 h-8 sm:w-12 sm:h-12 ${isConvenor ? 'text-amber-600' : 'text-gray-600'}`} />
           )}
         </div>
         
         {/* Name and Role */}
-        <div className="space-y-1 mb-4">
-          <h3 className={`text-lg font-semibold ${isConvenor ? 'text-amber-700' : 'text-gray-900'}`}>
+        <div className="space-y-1 mb-3 sm:mb-4">
+          <h3 className={`text-base sm:text-lg font-semibold ${isConvenor ? 'text-amber-700' : 'text-gray-900'}`}>
             {name}
           </h3>
           {role && (
-            <p className={`text-sm font-medium ${isConvenor ? 'text-amber-600' : 'text-gray-700'}`}>
+            <p className={`text-xs sm:text-sm font-medium ${isConvenor ? 'text-amber-600' : 'text-gray-700'}`}>
               {role}
             </p>
           )}
@@ -85,14 +85,14 @@ export default function TeamCard({ committeeMember, member }: TeamCardProps) {
 
       {/* Email Links Section */}
       {primaryEmail && (
-        <div className="mt-auto pt-4 border-t border-gray-300 flex flex-col items-center space-y-1">
+        <div className="mt-auto pt-3 sm:pt-4 border-t border-gray-300 flex flex-col items-center space-y-1">
           <a 
             href={`mailto:${primaryEmail}`}
             className="flex w-full items-center justify-center gap-2 text-xs text-gray-800 hover:text-amber-700 transition-colors font-medium"
             aria-label={`Email ${name} at ${primaryEmail}`}
           >
             <FaEnvelope className="w-3 h-3 flex-shrink-0" />
-            <span className="truncate" title={primaryEmail}>{primaryEmail}</span>
+            <span className="truncate text-[10px] sm:text-xs" title={primaryEmail}>{primaryEmail}</span>
           </a>
           {secondaryEmail && (
             <a 

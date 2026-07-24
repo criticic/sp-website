@@ -16,8 +16,8 @@ export default async function NewsletterListPage() {
   return (
     <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-3">
       <div className="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
-        <h2 className="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold">Newsletters</h2>
-        <p className="font-light sm:text-xl">Browse and read our newsletters featuring campus updates, student achievements, and important announcements.</p>
+        <h2 className="mb-4 text-2xl sm:text-3xl lg:text-4xl tracking-tight font-extrabold">Newsletters</h2>
+        <p className="font-light text-base sm:text-lg lg:text-xl">Browse and read our newsletters featuring campus updates, student achievements, and important announcements.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

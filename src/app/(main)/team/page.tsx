@@ -43,8 +43,8 @@ export default async function TeamPage() {
     <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-3">
       <div className="w-full max-w-[1280px] mx-auto">
           <div className="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
-        <h2 className="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold">Our Parliament Members</h2>
-        <p className="font-light sm:text-xl">Browse and read our newsletters featuring campus updates, student achievements, and important announcements.</p>
+        <h2 className="mb-4 text-2xl sm:text-3xl lg:text-4xl tracking-tight font-extrabold">Our Parliament Members</h2>
+        <p className="font-light text-base sm:text-lg lg:text-xl">Browse and read our newsletters featuring campus updates, student achievements, and important announcements.</p>
       </div>
           
           {executiveBody && (

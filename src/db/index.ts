@@ -2,7 +2,7 @@ import { createClient } from '@libsql/client';
 import { drizzle } from 'drizzle-orm/libsql';
 import * as schema from './schema';
 
-const isProduction = process.env.DATABASE_ENV === 'production' || process.env.NODE_ENV === 'production';
+const isProduction = process.env.DATABASE_ENV === 'production';
 
 const client = createClient({
   url: isProduction 
