@@ -35,5 +35,4 @@ next-env.d.ts
 src/db/local.db
 src/db/local.backup.sqlite
 
-# npm shim for bun (needed for Next.js build)
-npm.cmd
+
