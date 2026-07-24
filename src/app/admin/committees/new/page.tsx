@@ -28,27 +28,28 @@ async function createCommittee(formData: FormData) {
 export default function NewCommitteePage() {
     return (
         <div>
-            <Link href="/admin/committees" className="flex items-center text-gray-600 hover:text-gray-900 mb-6">
-                <FaArrowLeft className="w-5 h-5 mr-2" />
+            <Link href="/admin/committees" className="inline-flex items-center gap-2 font-mono text-xs text-slate hover:text-gold transition-colors mb-8">
+                <FaArrowLeft className="w-3 h-3" />
                 Back to Committees
             </Link>
-            <h1 className="text-3xl font-bold mb-6">Add New Committee</h1>
-            <div className="bg-white p-8 rounded-lg shadow-md">
+            <p className="font-mono text-xs text-gold tracking-[0.2em] uppercase mb-1">Admin</p>
+            <h1 className="text-2xl md:text-3xl mb-8">Add Committee</h1>
+            <div className="bg-light-parchment border border-slate/10 p-8 max-w-xl">
                 <form action={createCommittee}>
                     <div className="space-y-6">
                         <div>
-                            <label htmlFor="name" className="block font-medium text-gray-700">Committee Name</label>
-                            <input type="text" name="name" id="name" required className="w-full mt-1 border-gray-300 rounded-md shadow-sm" />
+                            <label htmlFor="name" className="block font-mono text-xs text-slate uppercase tracking-wider mb-2">Committee Name</label>
+                            <input type="text" name="name" id="name" required className="w-full px-4 py-3 bg-white border border-slate/20 text-ink font-body text-sm focus:outline-none focus:border-gold transition-colors" />
                         </div>
                         <div>
-                            <label htmlFor="description" className="block font-medium text-gray-700">Description</label>
-                            <textarea name="description" id="description" rows={3} className="w-full mt-1 border-gray-300 rounded-md shadow-sm"></textarea>
+                            <label htmlFor="description" className="block font-mono text-xs text-slate uppercase tracking-wider mb-2">Description</label>
+                            <textarea name="description" id="description" rows={3} className="w-full px-4 py-3 bg-white border border-slate/20 text-ink font-body text-sm focus:outline-none focus:border-gold transition-colors"></textarea>
                         </div>
                         <div>
-                            <label htmlFor="email" className="block font-medium text-gray-700">Committee Email</label>
-                            <input type="email" name="email" id="email" placeholder="committee.name@itbhu.ac.in" className="w-full mt-1 border-gray-300 rounded-md shadow-sm" />
+                            <label htmlFor="email" className="block font-mono text-xs text-slate uppercase tracking-wider mb-2">Email</label>
+                            <input type="email" name="email" id="email" placeholder="committee@itbhu.ac.in" className="w-full px-4 py-3 bg-white border border-slate/20 text-ink font-body text-sm focus:outline-none focus:border-gold transition-colors" />
                         </div>
-                        <button type="submit" className="px-6 py-2 bg-accent text-white rounded-lg hover:bg-primary hover:text-dark transition-colors">Save Committee</button>
+                        <button type="submit" className="px-6 py-3 bg-ink text-white text-sm font-body font-medium hover:bg-gold hover:text-ink transition-colors">Save Committee</button>
                     </div>
                 </form>
             </div>

@@ -30,24 +30,25 @@ async function createMember(formData: FormData) {
 export default function NewMemberPage() {
     return (
         <div>
-            <Link href="/admin/team" className="flex items-center text-gray-600 hover:text-gray-900 mb-6">
-                <FaArrowLeft className="w-5 h-5 mr-2" />
+            <Link href="/admin/team" className="inline-flex items-center gap-2 font-mono text-xs text-slate hover:text-gold transition-colors mb-8">
+                <FaArrowLeft className="w-3 h-3" />
                 Back to Team Members
             </Link>
-            <h1 className="text-3xl font-bold mb-6">Add New Member</h1>
-            <div className="bg-white p-8 rounded-lg shadow-md">
+            <p className="font-mono text-xs text-gold tracking-[0.2em] uppercase mb-1">Admin</p>
+            <h1 className="text-2xl md:text-3xl mb-8">Add Member</h1>
+            <div className="bg-light-parchment border border-slate/10 p-8 max-w-xl">
                 <form action={createMember}>
                     <div className="space-y-6">
                         <div>
-                            <label htmlFor="name" className="block font-medium text-gray-700">Full Name</label>
-                            <input type="text" name="name" id="name" required className="w-full mt-1 border-gray-300 rounded-md shadow-sm" />
+                            <label htmlFor="name" className="block font-mono text-xs text-slate uppercase tracking-wider mb-2">Full Name</label>
+                            <input type="text" name="name" id="name" required className="w-full px-4 py-3 bg-white border border-slate/20 text-ink font-body text-sm focus:outline-none focus:border-gold transition-colors" />
                         </div>
                         <ImageUploader name="image" />
                         <div>
-                            <label htmlFor="contactLink" className="block font-medium text-gray-700">Contact Link (mailto: or URL)</label>
-                            <input type="text" name="contactLink" id="contactLink" placeholder="mailto:example@itbhu.ac.in" className="w-full mt-1 border-gray-300 rounded-md shadow-sm" />
+                            <label htmlFor="contactLink" className="block font-mono text-xs text-slate uppercase tracking-wider mb-2">Contact (mailto or URL)</label>
+                            <input type="text" name="contactLink" id="contactLink" placeholder="mailto:example@itbhu.ac.in" className="w-full px-4 py-3 bg-white border border-slate/20 text-ink font-body text-sm focus:outline-none focus:border-gold transition-colors" />
                         </div>
-                        <button type="submit" className="px-6 py-2 bg-accent text-white rounded-lg hover:bg-primary hover:text-dark transition-colors">Save Member</button>
+                        <button type="submit" className="px-6 py-3 bg-ink text-white text-sm font-body font-medium hover:bg-gold hover:text-ink transition-colors">Save Member</button>
                     </div>
                 </form>
             </div>

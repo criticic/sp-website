@@ -22,27 +22,26 @@ export default function AdminSidebar({ logoutAction }: { logoutAction: () => Pro
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-4 left-4 z-50 lg:hidden bg-dark text-white p-2.5 rounded-lg shadow-lg"
+        className="fixed top-4 left-4 z-50 lg:hidden bg-ink text-white p-2.5"
         aria-label="Toggle sidebar"
       >
         {isOpen ? <FaTimes className="w-5 h-5" /> : <FaBars className="w-5 h-5" />}
       </button>
 
       {isOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 z-30 lg:hidden"
-          onClick={() => setIsOpen(false)}
-        />
+        <div className="fixed inset-0 bg-black/50 z-30 lg:hidden" onClick={() => setIsOpen(false)} />
       )}
 
       <aside className={cn(
-        "w-64 bg-dark text-white p-4 flex flex-col fixed h-full z-40 transition-transform duration-300",
+        "w-64 bg-ink text-white p-6 flex flex-col fixed h-full z-40 transition-transform duration-300",
         "lg:translate-x-0",
         isOpen ? "translate-x-0" : "-translate-x-full"
       )}>
-        <h2 className="text-2xl font-bold mb-8 text-primary mt-12 lg:mt-0">Admin Panel</h2>
+        <p className="font-mono text-xs text-gold tracking-[0.2em] uppercase mb-1 mt-12 lg:mt-0">Admin</p>
+        <h2 className="font-display text-2xl text-white mb-8">Panel</h2>
+
         <nav className="flex-grow">
-          <ul className="space-y-2">
+          <ul className="space-y-1">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = pathname === item.href || (item.href !== '/admin' && pathname.startsWith(item.href));
@@ -52,13 +51,13 @@ export default function AdminSidebar({ logoutAction }: { logoutAction: () => Pro
                     href={item.href}
                     onClick={() => setIsOpen(false)}
                     className={cn(
-                      "flex items-center p-2 rounded transition-colors",
+                      "flex items-center px-3 py-2.5 text-sm font-body transition-colors border-l-2",
                       isActive
-                        ? "bg-primary text-dark"
-                        : "hover:bg-primary hover:text-dark"
+                        ? "border-gold bg-gold/10 text-gold"
+                        : "border-transparent text-white/70 hover:text-white hover:border-white/30"
                     )}
                   >
-                    <Icon className="w-5 h-5 mr-3 flex-shrink-0" />
+                    <Icon className="w-4 h-4 mr-3 flex-shrink-0" />
                     {item.label}
                   </Link>
                 </li>
@@ -66,9 +65,10 @@ export default function AdminSidebar({ logoutAction }: { logoutAction: () => Pro
             })}
           </ul>
         </nav>
+
         <form action={logoutAction}>
-          <button type="submit" className="flex w-full items-center p-2 rounded hover:bg-red-500 transition-colors">
-            <FaSignOutAlt className="w-5 h-5 mr-3" />
+          <button type="submit" className="flex w-full items-center px-3 py-2.5 text-sm font-body text-white/50 hover:text-red-400 border-l-2 border-transparent hover:border-red-400 transition-colors">
+            <FaSignOutAlt className="w-4 h-4 mr-3 flex-shrink-0" />
             Logout
           </button>
         </form>

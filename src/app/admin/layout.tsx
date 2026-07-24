@@ -14,9 +14,9 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-parchment">
       <AdminSidebar logoutAction={logout} />
-      <main className="flex-1 p-4 md:p-8 lg:ml-64 pt-16 lg:pt-8 overflow-x-hidden">
+      <main className="flex-1 p-6 md:p-10 lg:ml-64 pt-20 lg:pt-10 overflow-x-hidden">
         {children}
       </main>
     </div>
