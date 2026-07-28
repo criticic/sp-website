@@ -39,20 +39,8 @@
   background-color: #0f172a;
 }
 
-.dark .hover\:text-ink:hover, .dark .content a:hover {
+.dark .hover\:bg-gold.hover\:text-ink:hover {
   color: #0f172a;
-}
-
-.dark .decoration-ink {
-  text-decoration-color: #0f172a;
-}
-
-.dark .border-ink {
-  border-color: #0f172a;
-}
-
-.dark .text-ink {
-  color: var(--color-ink);
 }
 
 .dark .btn-primary:hover {
