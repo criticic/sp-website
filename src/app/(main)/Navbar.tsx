@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { cn } from '@/lib/utils';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const menuitems = [
   { href: '/about', label: 'About' },
@@ -53,13 +54,16 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="block lg:hidden text-ink p-2"
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <FaTimes className="w-5 h-5" /> : <FaBars className="w-5 h-5" />}
-        </button>
+        <div className="flex items-center gap-1">
+          <ThemeToggle />
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="block lg:hidden text-ink p-2"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <FaTimes className="w-5 h-5" /> : <FaBars className="w-5 h-5" />}
+          </button>
+        </div>
       </header>
 
       <div className={cn(

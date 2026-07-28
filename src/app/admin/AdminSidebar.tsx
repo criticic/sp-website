@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FaHome, FaNewspaper, FaFileAlt, FaUsers, FaShieldAlt, FaSignOutAlt, FaBars, FaTimes } from 'react-icons/fa';
 import { cn } from '@/lib/utils';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const navItems = [
   { href: '/admin', label: 'Dashboard', icon: FaHome },
@@ -66,12 +67,18 @@ export default function AdminSidebar({ logoutAction }: { logoutAction: () => Pro
           </ul>
         </nav>
 
-        <form action={logoutAction}>
-          <button type="submit" className="flex w-full items-center px-3 py-2.5 text-sm font-body text-white/50 hover:text-red-400 border-l-2 border-transparent hover:border-red-400 transition-colors">
-            <FaSignOutAlt className="w-4 h-4 mr-3 flex-shrink-0" />
-            Logout
-          </button>
-        </form>
+        <div className="border-t border-white/10 pt-4 space-y-1">
+          <div className="flex items-center px-3 py-2.5 text-sm font-body text-white/50">
+            <ThemeToggle />
+            <span className="ml-3">Theme</span>
+          </div>
+          <form action={logoutAction}>
+            <button type="submit" className="flex w-full items-center px-3 py-2.5 text-sm font-body text-white/50 hover:text-red-400 border-l-2 border-transparent hover:border-red-400 transition-colors">
+              <FaSignOutAlt className="w-4 h-4 mr-3 flex-shrink-0" />
+              Logout
+            </button>
+          </form>
+        </div>
       </aside>
     </>
   );
