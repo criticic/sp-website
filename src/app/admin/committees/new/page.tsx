@@ -22,6 +22,7 @@ async function createCommittee(formData: FormData) {
         await db.insert(committees).values(validatedFields.data);
     } catch (error) { throw new Error('Failed to create committee. ' + error); }
     revalidatePath('/admin/committees');
+    revalidatePath('/team');
     redirect('/admin/committees');
 }
 

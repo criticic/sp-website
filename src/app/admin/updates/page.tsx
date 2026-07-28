@@ -13,6 +13,7 @@ async function deleteUpdate(slug: string) {
     } catch (error) { throw new Error('Failed to delete update.' + error); }
     revalidatePath('/admin/updates');
     revalidatePath('/updates');
+    revalidatePath(`/updates/${slug}`);
 }
 
 export default async function UpdatesAdminPage() {

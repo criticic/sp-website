@@ -11,6 +11,7 @@ async function deleteCommittee(name: string) {
         await db.delete(committees).where(eq(committees.name, name));
     } catch (error) { throw new Error('Failed to delete committee.' + error); }
     revalidatePath('/admin/committees');
+    revalidatePath('/team');
 }
 
 export default async function CommitteesAdminPage() {

@@ -31,6 +31,7 @@ async function updateCommittee(currentName: string, formData: FormData) {
         await db.update(committees).set(validatedFields.data).where(eq(committees.name, currentName));
     } catch (error) { throw new Error('Failed to update committee.' + error); }
     revalidatePath('/admin/committees');
+    revalidatePath('/team');
     revalidatePath(`/admin/committees/edit/${currentName}`);
     revalidatePath(`/admin/committees/edit/${validatedFields.data.name}`);
     redirect(`/admin/committees/edit/${validatedFields.data.name}`);
@@ -43,6 +44,8 @@ async function addMemberToCommittee(formData: FormData) {
     try {
         await db.insert(committeeMembers).values(validatedFields.data);
     } catch (error) { throw new Error('Failed to add member to committee.' + error); }
+    revalidatePath('/admin/committees');
+    revalidatePath('/team');
     revalidatePath(`/admin/committees/edit/${validatedFields.data.committeeName}`);
 }
 
@@ -51,6 +54,8 @@ async function removeMemberFromCommittee(id: number, committeeName: string) {
     try {
         await db.delete(committeeMembers).where(eq(committeeMembers.id, id));
     } catch (error) { throw new Error('Failed to remove member from committee.' + error); }
+    revalidatePath('/admin/committees');
+    revalidatePath('/team');
     revalidatePath(`/admin/committees/edit/${committeeName}`);
 }
 

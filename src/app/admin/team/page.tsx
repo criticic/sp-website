@@ -32,6 +32,7 @@ async function deleteMember(id: number) {
     } catch (error) { throw new Error('Failed to delete member.' + error); }
     revalidatePath('/admin/team');
     revalidatePath('/admin/committees');
+    revalidatePath('/team');
 }
 
 export default async function TeamAdminPage() {
