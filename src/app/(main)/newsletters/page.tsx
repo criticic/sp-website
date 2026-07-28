@@ -28,7 +28,7 @@ export default async function NewsletterListPage() {
               </div>
               <h3 className="font-body font-medium text-ink text-base mb-2">{newsletter.title}</h3>
               <p className="text-xs text-slate leading-relaxed line-clamp-3 mb-4 font-body">{newsletter.description}</p>
-              <div className="font-mono text-xs text-slate/60 mb-4">{formatDate(newsletter.publishDate)}</div>
+              <div className="font-mono text-xs text-slate/70 mb-4">{formatDate(newsletter.publishDate)}</div>
               <span className="inline-block px-4 py-2 bg-ink text-white text-xs font-mono uppercase tracking-wider hover:bg-gold hover:text-ink transition-colors">
                 View
               </span>

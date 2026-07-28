@@ -46,7 +46,7 @@ export default function Footer() {
             <p className="text-xs font-mono text-slate text-right">
               &copy; {new Date().getFullYear()} Students Parliament IIT BHU
             </p>
-            <p className="text-xs font-mono text-slate/60 text-right">
+            <p className="text-xs font-mono text-slate/70 text-right">
               Made by{' '}
               <a href="https://copsiitbhu.co.in" target="_blank" className="hover:text-gold transition-colors underline underline-offset-2 decoration-gold/30">COPS</a>
               {' '}&bull;{' '}

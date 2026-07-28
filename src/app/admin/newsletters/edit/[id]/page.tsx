@@ -51,7 +51,7 @@ export default async function EditNewsletterPage({ params }: { params: Promise<{
                     <div className="space-y-6">
                         <div>
                             <label className="block font-mono text-xs text-slate uppercase tracking-wider mb-2">ID</label>
-                            <p className="px-4 py-3 bg-white border border-slate/20 text-ink font-mono text-sm text-slate/60">{newsletter.id}</p>
+                            <p className="px-4 py-3 bg-white border border-slate/20 text-ink font-mono text-sm text-slate/70">{newsletter.id}</p>
                         </div>
                         <div>
                             <label htmlFor="title" className="block font-mono text-xs text-slate uppercase tracking-wider mb-2">Title</label>

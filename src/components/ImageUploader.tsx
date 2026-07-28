@@ -78,7 +78,7 @@ export default function ImageUploader({ name, defaultValue }: Props) {
           ) : (
             <>
               <FaCloudUploadAlt className="w-8 h-8 text-slate/40 mb-1" />
-              <span className="text-xs text-slate/60 font-body">Click to upload</span>
+              <span className="text-xs text-slate/70 font-body">Click to upload</span>
             </>
           )}
           <input

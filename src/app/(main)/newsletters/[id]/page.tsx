@@ -31,7 +31,7 @@ export default async function NewsletterPage({ params }: { params: Promise<{ id:
         <p className="font-mono text-xs text-gold tracking-[0.2em] uppercase mb-4">Newsletter</p>
         <h1 className="mb-3">{newsletter.title}</h1>
         <p className="text-lg text-slate leading-relaxed font-body mb-3">{newsletter.description}</p>
-        <p className="font-mono text-xs text-slate/60">{formatDate(newsletter.publishDate)}</p>
+        <p className="font-mono text-xs text-slate/70">{formatDate(newsletter.publishDate)}</p>
       </div>
 
       <div className="bg-light-parchment p-6">
