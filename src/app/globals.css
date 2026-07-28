@@ -47,6 +47,10 @@
   color: #0f172a;
 }
 
+.dark .btn-primary {
+  background-color: #0f172a;
+}
+
 .dark .btn-primary:hover {
   background-color: var(--color-gold);
   color: #0f172a;
