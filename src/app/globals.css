@@ -39,6 +39,10 @@
   background-color: #0f172a;
 }
 
+.dark .hover\:bg-gold:hover {
+  background-color: var(--color-gold);
+}
+
 .dark .hover\:bg-gold.hover\:text-ink:hover {
   color: #0f172a;
 }
