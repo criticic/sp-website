@@ -10,7 +10,7 @@ import ImageUploader from "@/components/ImageUploader";
 const MemberSchema = z.object({
   name: z.string().min(1, 'Name is required.'),
   image: z.string().optional(),
-  contactLink: z.string().url('Must be a valid URL.').optional().or(z.literal('')),
+  contactLink: z.string().optional(),
 });
 
 async function createMember(formData: FormData) {
